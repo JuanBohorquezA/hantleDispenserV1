@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+    <!--Aplication Themes-->
+    <SolidColorBrush x:Key="DARKTHEME" Color="#0D1B2A"/>
+    <SolidColorBrush x:Key="LIGHTTHEME" Color="#FFFFFF" />
+
+
+    <!--Aplication Colors-->
+    <SolidColorBrush x:Key="PRIMARYCOLOR" Color="#001D3D"/>
+    <SolidColorBrush x:Key="SECONDARYCOLOR" Color="#2C7DA0"/>
+    <SolidColorBrush x:Key="TERTIARYCOLOR" Color="#0D1B2A"/>
+    <SolidColorBrush x:Key="QUATERNARYCOLOR" Color="#023E7D"/>
+    
+
+    <!--Foregrounds-->
+    <SolidColorBrush x:Key="LIGTHCOLOR" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="ERRORCOLOR" Color="#F5130B"/>
+    <SolidColorBrush x:Key="SUCCESSCOLOR" Color="#0EC357"/>
+    <SolidColorBrush x:Key="TITLECOLOR" Color="#2C7DA0"/>
+
+    <!--screen dimensions-->
+    
+   
+
+</ResourceDictionary>
+
+
+
+
+    

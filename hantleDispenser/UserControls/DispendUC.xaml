@@ -1,0 +1,212 @@
+﻿<local:AppUserControl x:Class="hantleDispenser.UserControls.DispendUC"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"   
+        xmlns:local="clr-namespace:hantleDispenser.UserControls"
+        mc:Ignorable="d" 
+        d:DesignHeight="1024" d:DesignWidth="1449"
+        >
+
+    <Grid Background="{StaticResource DARKTHEME}">
+        <Grid.RowDefinitions>
+            <RowDefinition d:Height="250" Height="{DynamicResource RowDefinitionHeight}"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition d:Height="250" Height="{DynamicResource RowDefinitionHeight}"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock d:FontSize="35" Grid.Row="0" Text="APP SOPORTES" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}" />
+
+            <TextBlock d:FontSize="35" Grid.Row="1" x:Name="txtMessage" Text="*INGRESE UNA CANTIDAD A DISPENSAR VALIDA*"  VerticalAlignment="Center" TextAlignment="Center"  FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource ERRORCOLOR}" Visibility="Collapsed"/>
+        </Grid>
+
+
+        <Border Grid.Row="1" CornerRadius="35" Background="{StaticResource PRIMARYCOLOR}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border  Grid.Column="1" Grid.ColumnSpan="2" x:Name="DispendValueBorder" CornerRadius="35" BorderThickness="3" BorderBrush="{StaticResource SECONDARYCOLOR}" Background="{StaticResource DARKTHEME}" Margin="{DynamicResource MinMarginGrid}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+
+                        <Viewbox Grid.Row="1" Grid.RowSpan="3">
+                            <!-- Numeric Buttons-->
+                            <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+
+                                <Grid d:Margin="20 " d:Width="700" d:Height="50" Margin="{DynamicResource MarginGrid}" Height="{DynamicResource MinButtonHeight}"  Grid.Row="0"  VerticalAlignment="Top">
+
+                                    <TextBox  x:Name="inputDispendValue" Width="{DynamicResource ButtonWidth}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  FontSize="{DynamicResource MininFontSize}" FontWeight="DemiBold" Foreground="{StaticResource PRIMARYCOLOR}" TextChanged="OnTextChange" Focusable="False"/>
+
+                                    <TextBlock  x:Name="txtInputValue" Text="Ingrese el valor a dispensar" VerticalAlignment="Center" TextAlignment="Center" FontSize="{DynamicResource MininFontSize}" FontWeight="SemiBold" Visibility="Visible" Foreground="{StaticResource PRIMARYCOLOR}"/>
+                                </Grid>
+                                <Grid Grid.Row="1" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Border d:Width="80" d:Height="80" d:CornerRadius="50" Grid.Column="3" HorizontalAlignment="Right" Tag="1" MouseDown="BtnWrite" Style="{StaticResource BorderParent}">
+                                            <Border d:CornerRadius="50" d:Margin="10" Style="{StaticResource BorderChild}">
+                                                <TextBlock Text="1" Style="{StaticResource ButtonText}"/>
+                                            </Border>
+                                        </Border>
+                                        <Border d:Width="80" d:Height="80"  d:CornerRadius="50" Grid.Column="4" HorizontalAlignment="Center"  Tag="2"  MouseDown="BtnWrite" Style="{StaticResource BorderParent}">
+                                            <Border d:CornerRadius="50" d:Margin="10" Style="{StaticResource BorderChild}">
+                                                <TextBlock Text="2" Style="{StaticResource ButtonText}"/>
+                                            </Border>
+                                        </Border>
+                                        <Border d:Width="80" d:Height="80" d:CornerRadius="50" Grid.Column="5" HorizontalAlignment="Left" Tag="3" MouseDown="BtnWrite" Style="{StaticResource BorderParent}">
+                                            <Border d:CornerRadius="50" d:Margin="10" Style="{StaticResource BorderChild}">
+                                                <TextBlock Text="3" Style="{StaticResource ButtonText}"/>
+                                            </Border>
+                                        </Border>
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Border d:Width="80" d:Height="80" d:CornerRadius="50" Grid.Column="3" HorizontalAlignment="Right"  Tag="4"  MouseDown="BtnWrite" Style="{StaticResource BorderParent}">
+                                            <Border d:CornerRadius="50" d:Margin="10" Style="{StaticResource BorderChild}" >
+                                                <TextBlock Text="4" Style="{StaticResource ButtonText}"/>
+                                            </Border>
+                                        </Border>
+                                        <Border d:Width="80" d:Height="80" d:CornerRadius="50" Grid.Column="4" HorizontalAlignment="Center"  Tag="5"  MouseDown="BtnWrite" Style="{StaticResource BorderParent}">
+                                            <Border d:CornerRadius="50" d:Margin="10" Style="{StaticResource BorderChild}">
+                                                <TextBlock Text="5" Style="{StaticResource ButtonText}"/>
+                                            </Border>
+                                        </Border>
+                                        <Border d:Width="80" d:Height="80" d:CornerRadius="50" Grid.Column="5" HorizontalAlignment="Left"  Tag="6"  MouseDown="BtnWrite" Style="{StaticResource BorderParent}">
+                                            <Border d:CornerRadius="50" d:Margin="10" Style="{StaticResource BorderChild}">
+                                                <TextBlock Text="6" Style="{StaticResource ButtonText}"/>
+                                            </Border>
+                                        </Border>
+                                    </Grid>
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Border  d:Width="80" d:Height="80" d:CornerRadius="50" Grid.Column="3" HorizontalAlignment="Right"  Tag="7" MouseDown="BtnWrite" Style="{StaticResource BorderParent}">
+                                            <Border d:CornerRadius="50" d:Margin="10" Style="{StaticResource BorderChild}" >
+                                                <TextBlock Text="7" Style="{StaticResource ButtonText}"/>
+                                            </Border>
+                                        </Border>
+                                        <Border  d:Width="80" d:Height="80" d:CornerRadius="50" Grid.Column="4" HorizontalAlignment="Center"  Tag="8"  MouseDown="BtnWrite" Style="{StaticResource BorderParent}">
+                                            <Border d:CornerRadius="50" d:Margin="10" Style="{StaticResource BorderChild}">
+                                                <TextBlock Text="8" Style="{StaticResource ButtonText}"/>
+                                            </Border>
+                                        </Border>
+                                        <Border  d:Width="80" d:Height="80" d:CornerRadius="50" Grid.Column="5" HorizontalAlignment="Left"  Tag="9"  MouseDown="BtnWrite" Style="{StaticResource BorderParent}">
+                                            <Border d:CornerRadius="50" d:Margin="10" Style="{StaticResource BorderChild}">
+                                                <TextBlock Text="9"  Style="{StaticResource ButtonText}"/>
+                                            </Border>
+                                        </Border>
+                                    </Grid>
+                                    <Grid Grid.Row="3">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Border  d:Width="80" d:Height="80" d:CornerRadius="50" Grid.Column="3" HorizontalAlignment="Right"  MouseDown="BtnErasing" Style="{StaticResource BorderParent}" Background="{StaticResource LIGTHCOLOR}" >
+                                            <Border d:CornerRadius="50" d:Margin="10" Style="{StaticResource BorderChild}">
+                                                <md:PackIcon Kind="ChevronLeft" VerticalAlignment="Center" HorizontalAlignment="Center" Width="{DynamicResource IconSize}" Height="{DynamicResource IconSize}" Foreground="{StaticResource LIGTHCOLOR }"/>
+                                            </Border>
+                                        </Border>
+                                        <Border d:Width="80" d:Height="80" d:CornerRadius="50"  Grid.Column="4" HorizontalAlignment="Center" Tag="0"  MouseDown="BtnWrite" Style="{StaticResource BorderParent}">
+                                            <Border d:CornerRadius="50" d:Margin="10" Style="{StaticResource BorderChild}">
+                                                <TextBlock  Text="0" Style="{StaticResource ButtonText}"/>
+                                            </Border>
+                                        </Border>
+
+                                        <Border d:Width="80" d:Height="80" d:CornerRadius="50" Grid.Column="5" HorizontalAlignment="Left" MouseDown="BtnClear" Style="{StaticResource BorderParent}" Background="{StaticResource LIGTHCOLOR}">
+                                            <Border d:CornerRadius="50" d:Margin="10" Style="{StaticResource BorderChild}">
+                                                <TextBlock Text="X" Style="{StaticResource ButtonText}" FontWeight="Bold"/>
+                                            </Border>
+                                        </Border>
+                                    </Grid>
+
+                                </Grid>
+                            </Grid>
+                        </Viewbox>
+                        
+                    </Grid>
+                </Border>
+            </Grid>
+
+
+        </Border>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <local:GenericButton  Grid.Column="0"  ButtonBackground="{StaticResource PRIMARYCOLOR}" ButtonText="Dispensar"  HorizontalAlignment="Center" VerticalAlignment="Center" ButtonHeight="{DynamicResource MButtonHeight}" ButtonWidth="{DynamicResource MButtonWidth}" PreviewMouseDown="BtnContinue"/>
+            <local:GenericButton  Grid.Column="1"  ButtonBackground="{StaticResource PRIMARYCOLOR}" ButtonText="Cancelar"  HorizontalAlignment="Center" VerticalAlignment="Center" ButtonHeight="{DynamicResource MButtonHeight}" ButtonWidth="{DynamicResource MButtonWidth}" PreviewMouseDown="BtnCancelar"/>
+
+        </Grid>
+    </Grid>
+</local:AppUserControl>

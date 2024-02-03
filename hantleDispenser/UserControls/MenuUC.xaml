@@ -1,0 +1,85 @@
+﻿<local:AppUserControl x:Class="hantleDispenser.UserControls.MenuUC"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:hantleDispenser.UserControls"
+      mc:Ignorable="d" 
+         d:DesignHeight="1024" d:DesignWidth="1449">
+
+    <Grid   Background="{StaticResource DARKTHEME}">
+        <Grid.RowDefinitions>
+            <RowDefinition d:Height="250" Height="{DynamicResource RowDefinitionHeight}"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition d:Height="250" Height="{DynamicResource RowDefinitionHeight}"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock d:FontSize="35" Grid.Row="0" Text="APP SOPORTES" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}" />
+
+            <TextBlock d:FontSize="35" Grid.Row="1" x:Name="txtWelcome" Text="HOLA USUARIO COMO VAMOS PA?" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{DynamicResource CommonFontSize}" Foreground="{StaticResource TITLECOLOR}" FontWeight="SemiBold"/>
+        </Grid>
+
+
+
+
+        <!-- GENERAMOS EL MENU CON BOTONES INDEPENDIENTES Y LUEGO ITERAREMOS EL GRID PARA VALIDAR LOS ROLES (LA VISIBILITY DEPENDE DEL ROL)-->
+        <Border d:Margin="20" Margin="{DynamicResource MarginGrid}" Grid.Row="1" CornerRadius="35" Background="{StaticResource PRIMARYCOLOR}" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid d:Margin="20" Margin="{DynamicResource MarginGrid}" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--Inicialize BUTTON-->
+                    <Border d:Margin="20" x:Name="ButtonInit" Margin="{DynamicResource MarginGrid}" Grid.Column="0" CornerRadius="15" Background="{StaticResource SECONDARYCOLOR}" Cursor="Hand" PreviewMouseDown="BtnInicialize">
+                        <TextBlock d:FontSize="35" Text="Inicializar" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}"/>
+                    </Border>
+
+                    <!--Dispend BUTTON-->
+                    <Border d:Margin="20" d:Visibility="Visible" x:Name="ButtonDispend" Margin="{DynamicResource MarginGrid}" Grid.Column="1" CornerRadius="15" Background="{StaticResource SECONDARYCOLOR}" Cursor="Hand" Visibility="Collapsed" PreviewMouseDown="BtnDispend">
+                        <TextBlock d:FontSize="35" Text="Dispensar" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}"/>
+                    </Border>
+
+                    <!--Dispend quantites  BUTTON-->
+                    <Border d:Margin="20" d:Visibility="Visible" x:Name="ButtonDispendQuantities" Margin="{DynamicResource MarginGrid}" Grid.Column="2" CornerRadius="15" Background="{StaticResource SECONDARYCOLOR}" Cursor="Hand" Visibility="Collapsed" PreviewMouseDown="BtnDispendQuantites">
+                        <TextBlock d:FontSize="35" Text="Dispensar cantidades" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}"/>
+                    </Border>
+                </Grid>
+
+                <Grid d:Margin="20" Margin="{DynamicResource MarginGrid}" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--Get Sensor BUTTON-->
+                    <Border d:Margin="20" x:Name="ButtonGetSensor" Margin="{DynamicResource MarginGrid}" Grid.Column="0" CornerRadius="15" Background="{StaticResource SECONDARYCOLOR}" Cursor="Hand" PreviewMouseDown="BtnGetSensor">
+                        <TextBlock d:FontSize="35" Text="Obtener sensor" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}"/>
+                    </Border>
+
+                    <!--try Eject BUTTON-->
+                    <Border d:Margin="20" x:Name="ButtonEject" Margin="{DynamicResource MarginGrid}" Grid.Column="1" CornerRadius="15" Background="{StaticResource SECONDARYCOLOR}" Cursor="Hand" PreviewMouseDown="BtntryEject">
+                        <TextBlock d:FontSize="35" Text="Desatascar" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}"/>
+                    </Border>
+
+                    <!--Exit  BUTTON-->
+                    <Border d:Margin="20" x:Name="ButtonExit" Margin="{DynamicResource MarginGrid}" Grid.Column="2" CornerRadius="15" Background="{StaticResource SECONDARYCOLOR}" Cursor="Hand" PreviewMouseDown="BtnExit">
+                        <TextBlock d:FontSize="35" Text="Salir" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}"/>
+                    </Border>
+                </Grid>
+
+            </Grid>
+        </Border>
+
+    </Grid>
+</local:AppUserControl>

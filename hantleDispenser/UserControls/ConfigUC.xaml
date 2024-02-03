@@ -1,0 +1,123 @@
+﻿<local:AppUserControl x:Class="hantleDispenser.UserControls.ConfigUC"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:hantleDispenser.UserControls"
+      mc:Ignorable="d" 
+      
+       d:DesignHeight="1024" d:DesignWidth="1449">
+
+    <Grid   Background="{StaticResource DARKTHEME}">
+        <Grid.RowDefinitions>
+            <RowDefinition d:Height="250" Height="{DynamicResource RowDefinitionHeight}"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition d:Height="250" Height="{DynamicResource RowDefinitionHeight}"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock d:FontSize="35" Grid.Row="0" Text="APP SOPORTES" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}" />
+
+            <TextBlock d:FontSize="35" Grid.Row="1" x:Name="txtMessage" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{DynamicResource CommonFontSize}" FontWeight="Bold" Foreground="{StaticResource ERRORCOLOR}"/>
+        </Grid>
+
+        <Border d:Margin="20" Margin="{DynamicResource MarginGrid}" Grid.Row="1" CornerRadius="35" Background="{StaticResource PRIMARYCOLOR}" >
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!--ESTE ES EL GRID DEL COM-->
+                <Border Grid.Row="0" BorderThickness="3"  Background="{StaticResource TERTIARYCOLOR}" BorderBrush="{StaticResource SECONDARYCOLOR}">
+                    <Grid d:Margin="20" Margin="{DynamicResource MarginGrid}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock d:FontSize="30" Grid.Row="0" Text="POR FAVOR, INDIQUE EL PUERTO COM DEL BILLETERO." TextWrapping="Wrap" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource TITLECOLOR}" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+
+                        <ListBox Grid.Row="1" x:Name="COMS" Padding="5" Background="Transparent" ItemsSource="{Binding COMLIST}"  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+
+                            <ListBox.Resources>
+                                <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource VerticalScrollBarStyle}" />
+                            </ListBox.Resources>
+
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate >
+                                <DataTemplate>
+                                    <Border d:Width="450" d:Height="50" x:Name="border" Background="{StaticResource SECONDARYCOLOR}" Width="{DynamicResource MinButtonWidth}" Height="{DynamicResource MinButtonHeight}" BorderThickness="1" CornerRadius="{DynamicResource MinCornersRadius}">
+                                        <StackPanel Orientation="Horizontal" AllowDrop="False" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                            <TextBlock Text="{Binding}" Foreground="{StaticResource LIGTHCOLOR}" TextAlignment="Center" FontSize="{DynamicResource CommonFontSize}"/>
+                                        </StackPanel>
+                                    </Border>
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}}" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="{StaticResource PRIMARYCOLOR}"/>
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                    </Grid>
+                </Border>
+
+                <!--ESTE ES EL GRID DE LAS DENOMINACIONES-->
+                <Border Grid.Row="1" BorderThickness="3" Background="{StaticResource TERTIARYCOLOR}" BorderBrush="{StaticResource SECONDARYCOLOR}">
+                    <Grid d:Margin="20" Margin="{DynamicResource MarginGrid}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock d:FontSize="30" Grid.Row="0" Text="POR FAVOR, INDIQUE LAS DENOMINACIONES DE  LOS BAÚLES." TextWrapping="Wrap" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource TITLECOLOR}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <ListBox Grid.Row ="1"  x:Name="Denominations"  Padding="5" Background="Transparent" ItemsSource="{Binding DENOMINATIONSLIST}"  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+
+                            <ListBox.Resources>
+                                <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource VerticalScrollBarStyle}" />
+                            </ListBox.Resources>
+
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate >
+                                <DataTemplate>
+                                    <Border d:Width="450" d:Height="50" x:Name="border" Background="{StaticResource SECONDARYCOLOR}" Width="{DynamicResource MidButtonWidth}" Height="{DynamicResource MinButtonHeight}"  BorderThickness="1" CornerRadius="{DynamicResource MinCornersRadius}" >
+                                        <StackPanel Orientation="Horizontal" AllowDrop="False" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                            <TextBlock  Text="{Binding}" Foreground="{StaticResource LIGTHCOLOR}" TextAlignment="Center" FontSize="{DynamicResource CommonFontSize}"/>
+                                        </StackPanel>
+                                    </Border>
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}}" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="{StaticResource PRIMARYCOLOR}"/>
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!--Continue BUTTON-->
+        <Grid Grid.Row="2" >
+            <local:GenericButton   ButtonBackground="{StaticResource SECONDARYCOLOR}" ButtonText="Continuar"  HorizontalAlignment="Center" VerticalAlignment="Center" ButtonHeight="{DynamicResource ButtonHeight}" ButtonWidth="{DynamicResource ButtonWidth}" PreviewMouseDown="BtnContinue"/>
+        </Grid>
+
+    </Grid>
+
+</local:AppUserControl>

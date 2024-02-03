@@ -1,0 +1,157 @@
+﻿<local:AppUserControl x:Class="hantleDispenser.UserControls.DispendQuantitiesUC"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"   
+        xmlns:local="clr-namespace:hantleDispenser.UserControls"
+        mc:Ignorable="d" 
+        d:DesignHeight="1024" d:DesignWidth="1449"
+        >
+
+    <Grid Background="{StaticResource DARKTHEME}">
+        <Grid.RowDefinitions>
+            <RowDefinition d:Height="250" Height="{DynamicResource RowDefinitionHeight}"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition d:Height="250" Height="{DynamicResource RowDefinitionHeight}"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock d:FontSize="35" Grid.Row="0" Text="APP SOPORTES" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}" />
+
+            <TextBlock d:FontSize="35" Grid.Row="1" x:Name="txtMessage" Text="*INGRESE UNA CANTIDAD A DISPENSAR VALIDA*"  VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap"  FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource ERRORCOLOR}" Visibility="Collapsed"/>
+        </Grid>
+
+
+        <Border Grid.Row="1" CornerRadius="35" Background="{StaticResource PRIMARYCOLOR}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border  Grid.Column="1" Grid.ColumnSpan="2" x:Name="DispendValueBorder" CornerRadius="35" BorderThickness="3" BorderBrush="{StaticResource SECONDARYCOLOR}" Background="{StaticResource TERTIARYCOLOR}" Margin="{DynamicResource MinMarginGrid}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid d:Margin="20 " d:Width="700" d:Height="50" Margin="{DynamicResource MarginGrid}" Grid.Row="0" VerticalAlignment="Bottom">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" d:FontSize="30"  x:Name="txtInputValue" Text="Por favor Indique el valor a dispensar por baúl" TextWrapping="Wrap" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Visibility="Visible" Foreground="{StaticResource SECONDARYCOLOR}"/>
+
+                        </Grid>
+                        <Grid  Margin="{DynamicResource MarginGrid}" Grid.Row="1" Grid.RowSpan="4">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" VerticalAlignment="Bottom">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock d:FontSize="30" Grid.Column="0" Text="Denominación" Style="{StaticResource CommonText}"/>
+                                <TextBlock d:FontSize="30" Grid.Column="1" Text="Cantidad" Style="{StaticResource CommonText}"/>
+                                <TextBlock d:FontSize="30" Grid.Column="2" Text="Acciones" Style="{StaticResource CommonText}"/>
+
+                            </Grid>
+
+
+                            <!---Element list-->
+                            <ListBox x:Name="DataView" Grid.Row="1" Grid.RowSpan="3" ItemContainerStyle="{StaticResource MyListBoxItemStyle}" Background="Transparent" BorderThickness="0">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border >
+                                            <Grid Height="{DynamicResource MinButtonHeight}" Margin="{DynamicResource MinMarginGrid}">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                
+                                                <!-- Columna de Denominación -->
+                                                <Grid Grid.Column="0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="10*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Border Grid.Column="1" Style="{StaticResource DispendButton}">
+                                                        <TextBlock Text="{Binding Denomination, StringFormat='{}${0}'}" Style="{StaticResource DispenTextButton}"/>
+                                                    </Border>
+                                                </Grid>
+
+                                                <!-- Columna de Cantidad -->
+                                                <Grid Grid.Column="1">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="10*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Border Grid.Column="1" Style="{StaticResource DispendButton}">
+                                                        <TextBlock Text="{Binding Quantity}" Style="{StaticResource DispenTextButton}"/>
+                                                    </Border>
+                                                </Grid>
+
+                                                <!-- Columna de Acciones -->
+                                                <Grid Grid.Column="2">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="5*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="5*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Border Grid.Column="1" Cursor="Hand" Style="{StaticResource DispendButton}" MouseDown="BtnSum">
+                                                        <TextBlock Text="+" Style="{StaticResource DispenTextButton}" FontWeight="Bold"/>
+                                                    </Border>
+                                                    <Border Grid.Column="3" Cursor="Hand" Style="{StaticResource DispendButton}" MouseDown="BtnSubtract">
+                                                        <TextBlock Text="-" Style="{StaticResource DispenTextButton}" FontWeight="Bold"/>
+                                                    </Border>
+                                                </Grid>
+
+
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+            
+        
+        </Border>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <local:GenericButton  Grid.Column="0"  ButtonBackground="{StaticResource PRIMARYCOLOR}" ButtonText="Dispensar"  HorizontalAlignment="Center" VerticalAlignment="Center" ButtonHeight="{DynamicResource MButtonHeight}" ButtonWidth="{DynamicResource MButtonWidth}" PreviewMouseDown="BtnContinue"/>
+            <local:GenericButton  Grid.Column="1"  ButtonBackground="{StaticResource PRIMARYCOLOR}" ButtonText="Cancelar"  HorizontalAlignment="Center" VerticalAlignment="Center" ButtonHeight="{DynamicResource MButtonHeight}" ButtonWidth="{DynamicResource MButtonWidth}" PreviewMouseDown="BtnCancelar"/>
+
+        </Grid>
+    </Grid>
+</local:AppUserControl>

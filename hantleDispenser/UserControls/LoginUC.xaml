@@ -1,0 +1,61 @@
+﻿<local:AppUserControl x:Class="hantleDispenser.UserControls.LoginUC"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"  
+      xmlns:local="clr-namespace:hantleDispenser.UserControls"
+      mc:Ignorable="d" 
+      d:DesignHeight="1024" d:DesignWidth="1449"
+      >
+
+    <Grid   Background="{StaticResource DARKTHEME}">
+        <Grid.RowDefinitions>
+            <RowDefinition d:Height="250" Height="{DynamicResource RowDefinitionHeight}"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition d:Height="250" Height="{DynamicResource RowDefinitionHeight}"/>
+        </Grid.RowDefinitions>
+        <!---TXT MESSAGE ERROR-->
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock d:FontSize="35" Grid.Row="0" Text="APP SOPORTES" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}" />
+
+            <TextBlock d:FontSize="35" Grid.Row="1" x:Name="txtMessage" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{DynamicResource CommonFontSize}" FontWeight="Bold" Foreground="{StaticResource ERRORCOLOR}"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!-- USERNAME PLACEHOLDER-->
+            <Border Grid.Row="0"  x:Name="BorderUsername" CornerRadius="35" BorderThickness="4" BorderBrush="{StaticResource SECONDARYCOLOR}" d:Width="800" d:Height="150" Width="{DynamicResource ButtonWidth}" Height="{DynamicResource ButtonHeight}" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                <Grid>
+                    <TextBox d:FontSize="35" Background="Transparent" BorderThickness="0" x:Name="UsernameBox" Tag="{Binding ElementName=placeHolderUsername}" TextChanged="Input_changed" GotFocus="OnGotFocus" LostFocus="OnLostFocus" Foreground="{StaticResource LIGTHCOLOR}" FontSize="{DynamicResource CommonFontSize}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                    <TextBlock d:FontSize="35" Text="Username" x:Name="placeHolderUsername" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}"  IsHitTestVisible="False"/>
+                </Grid>
+            </Border>
+            <!--PASSWORD PLACEHOLDER -->
+            <Border Grid.Row="1"  x:Name="BorderPassword" CornerRadius="35" BorderThickness="4" BorderBrush="{StaticResource SECONDARYCOLOR}" d:Width="800" d:Height="150" Width="{DynamicResource ButtonWidth}" Height="{DynamicResource ButtonHeight}"  VerticalAlignment="Center" HorizontalAlignment="Center" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <PasswordBox d:FontSize="35" Grid.Column="1" Background="Transparent" BorderThickness="0" x:Name="PasswordBox" Tag="{Binding ElementName=placeHolderPassword}" PasswordChanged="Password_changed"  GotFocus="OnGotFocus" LostFocus="OnLostFocus" Foreground="{StaticResource LIGTHCOLOR}" FontSize="{DynamicResource CommonFontSize}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="542"></PasswordBox>
+                    <TextBox d:FontSize="35" Grid.Column="1" Background="Transparent" BorderThickness="0" x:Name="TextPasswordBox" Tag="{Binding ElementName=placeHolderPassword}" TextChanged="Input_changed" GotFocus="OnGotFocus" LostFocus="OnLostFocus" Foreground="{StaticResource LIGTHCOLOR}" FontSize="{DynamicResource CommonFontSize}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Visibility="Collapsed"/>
+                    <TextBlock d:FontSize="35" Grid.Column="1" Text="Password" x:Name="placeHolderPassword" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}" IsHitTestVisible="False"/>
+                    <md:PackIcon Grid.Column="2" Style="{StaticResource IconEyeStyle}" PreviewMouseDown="ButtonShowPWD"/>
+                </Grid>
+            </Border>
+            <local:GenericButton  Grid.Row="2"   ButtonBackground="{StaticResource PRIMARYCOLOR}"  ButtonText="Login"  HorizontalAlignment="Center" VerticalAlignment="Center" ButtonHeight="{DynamicResource ButtonHeight}" ButtonWidth="{DynamicResource ButtonWidth}" PreviewMouseDown="ButtonLogin"/>
+        </Grid>
+
+
+    </Grid>
+</local:AppUserControl>

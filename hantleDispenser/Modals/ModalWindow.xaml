@@ -1,0 +1,121 @@
+﻿<Window x:Class="hantleDispenser.Modals.ModalWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:hantleDispenser.Modals"
+        
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        Height="1024"
+        Width="1449"
+        WindowStyle="None"
+        Topmost="False"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid   Background="{StaticResource DARKTHEME}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{DynamicResource RowDefinitionHeight}"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="{DynamicResource RowDefinitionHeight}"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Text="APP SOPORTES" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}" />
+        </Grid>
+        <Border Grid.Row="1" Background="{StaticResource PRIMARYCOLOR}" Margin="{DynamicResource MarginGrid}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock 
+                        Grid.Row="0"
+                        x:Name="TxtTitle" 
+                        Text="{Binding Title}"
+                        HorizontalAlignment="Center"
+                        FontSize="{DynamicResource CommonFontSize}" 
+                        FontFamily="Myriad Pro"
+                        FontWeight="Bold"
+                        VerticalAlignment="Center"
+                        TextAlignment="Center"
+                        Foreground="{StaticResource LIGTHCOLOR}" 
+                    />
+                    <TextBlock 
+                        Grid.Row="1"
+                        x:Name="TxtMsg" 
+                        Text="{Binding Message}" 
+                        FontSize="{DynamicResource CommonFontSize}"   
+                        FontWeight="bold"
+                        FontFamily="Myriad Pro"
+                        TextWrapping="Wrap"
+                        VerticalAlignment="Center"
+                        TextAlignment="Center"
+                        Foreground="{StaticResource LIGTHCOLOR}" 
+                    />
+                </Grid>
+                <Grid Grid.Row="1">
+                    <mah:ProgressRing 
+                        Grid.Row="1"
+                        x:Name="LoadGif"
+                        Foreground="{StaticResource SECONDARYCOLOR}"
+                        IsActive="True" 
+                        Height="{DynamicResource GifDimensions}" 
+                        Width="{DynamicResource GifDimensions}" 
+                        VerticalAlignment="Center"
+                        Visibility="Visible"
+                    />
+                </Grid>
+            </Grid>
+            
+        </Border>
+
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <!--Confirm BUTTON-->
+                <Border x:Name="BtnConfirm" Margin="{DynamicResource MarginGrid}" Grid.Column="0" CornerRadius="15"  Background="{StaticResource SECONDARYCOLOR}" Cursor="Hand" PreviewMouseDown="BtnConfirm_MouseDown">
+                    <TextBlock  Text="Sí, estoy seguro" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}"/>
+                </Border>
+
+                <!--Acept BUTTON-->
+                <Border x:Name="BtnAcept" Margin="{DynamicResource MarginGrid}" Grid.Column="1" CornerRadius="15" Background="{StaticResource QUATERNARYCOLOR}" Cursor="Hand" PreviewMouseDown="BtnAcept_MouseDown">
+                    <TextBlock  Text="Aceptar" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}"/>
+                </Border>
+
+
+                <!--Inicialize BUTTON-->
+                <Border x:Name="BtnCancel" Margin="{DynamicResource MarginGrid}" Grid.Column="2" CornerRadius="15" Background="{StaticResource SECONDARYCOLOR}" Cursor="Hand" PreviewMouseDown="BtnCancel_MouseDown">
+                    <TextBlock  Text="Cancelar" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}"/>
+                </Border>
+            </Grid>
+        </Grid>
+
+        
+
+        
+
+    </Grid>
+</Window>
