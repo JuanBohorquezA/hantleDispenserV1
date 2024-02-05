@@ -72,6 +72,9 @@ namespace hantleDispenser
 
 
 
+            //definiciones para el ancho de los botones de Menu
+            this.Resources["ButtonWidthMenu"] = (double)Math.Round(_maxDimension * 0.2);
+            this.Resources["ButtonHeightMenu"] = (double)Math.Round(_maxDimension * 0.05);
 
             this.Resources["MinButtonWidth"] = (double)Math.Round(_minDimension * 0.24);
             this.Resources["MidButtonWidth"] = (double)Math.Round(_minDimension * 0.44);

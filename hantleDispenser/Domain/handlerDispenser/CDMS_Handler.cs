@@ -103,7 +103,7 @@ namespace HantleDispenserAPI
             }
             catch (Exception ex)
             {
-                errorCodeInt = ErrorCDMS.Unknown;
+                errorCodeInt = ErrorCDMS.RuntimeError;
             }
 
             var res = new CDMS_Response();
@@ -143,7 +143,7 @@ namespace HantleDispenserAPI
             }
             catch (Exception ex)
             {
-                errorCodeInt = ErrorCDMS.Unknown;
+                errorCodeInt = ErrorCDMS.RuntimeError;
             }
 
             var res = new CDMS_Response();
@@ -190,7 +190,7 @@ namespace HantleDispenserAPI
             }
             catch (Exception ex)
             {
-                errorCodeInt = ErrorCDMS.Unknown;
+                errorCodeInt = ErrorCDMS.RuntimeError;
             }
 
             var res = new CDMS_Response();
@@ -251,7 +251,7 @@ namespace HantleDispenserAPI
             }
             catch (Exception ex)
             {
-                errorCodeInt = ErrorCDMS.Unknown;
+                errorCodeInt = ErrorCDMS.RuntimeError;
             }
 
             var res = new CDMS_Response();
@@ -285,7 +285,7 @@ namespace HantleDispenserAPI
             }
             catch (Exception ex)
             {
-                errorCodeInt = ErrorCDMS.Unknown;
+                errorCodeInt = ErrorCDMS.RuntimeError;
             }
 
             var res = new CDMS_Response();

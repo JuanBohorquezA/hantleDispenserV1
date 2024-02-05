@@ -7,6 +7,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows;
+using handlerDispenser.Domain;
 
 namespace hantleDispenser.UserControls
 {
@@ -49,6 +51,15 @@ namespace hantleDispenser.UserControls
                 CDMS_Handler.Denominations = DenominationSelected;
 
         }
+        private  bool IsValid(List<CDMS_Response> response) 
+        {
+            if (response.Count <= 0) return false;
+            if (response[0].isSuccess) return true;
+            if (response[0].UIResponse.Contains(HandlerResponse.ErrorInitialize.Split(":")[0])) return true;
+
+            txtMessage.Text = response[0].UIResponse;
+            return false;
+        }
 
         private async void BtnContinue(object sender, MouseButtonEventArgs e)
         {
@@ -64,15 +75,16 @@ namespace hantleDispenser.UserControls
                 txtMessage.Text = "SELECCIONE UNA DENOMINACIÓN PARA CONTINUAR";
                 return;
             }
+            
             SetDenominations();
+
             _loadModal = _nav.ShowLoadModal("Realizando la configuración...");
+
             var inicializeResponse = await OperationManager.GoInitialize();
             _nav.CloseLoadModal(ref _loadModal);
-            if (!inicializeResponse[0].isSuccess)
-            {
-                txtMessage.Text = inicializeResponse[0].UIResponse;
-                return;
-            }
+            if (!IsValid(inicializeResponse)) return;
+            
+
             Dispatcher.Invoke(() => { Goto(new MenuUC()); });
 
         }

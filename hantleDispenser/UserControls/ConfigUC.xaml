@@ -115,7 +115,7 @@
 
         <!--Continue BUTTON-->
         <Grid Grid.Row="2" >
-            <local:GenericButton   ButtonBackground="{StaticResource SECONDARYCOLOR}" ButtonText="Continuar"  HorizontalAlignment="Center" VerticalAlignment="Center" ButtonHeight="{DynamicResource ButtonHeight}" ButtonWidth="{DynamicResource ButtonWidth}" PreviewMouseDown="BtnContinue"/>
+            <local:GenericButton x:Name="BtnContinuar"   ButtonBackground="{StaticResource SECONDARYCOLOR}" ButtonText="Continuar"  HorizontalAlignment="Center" VerticalAlignment="Center" ButtonHeight="{DynamicResource ButtonHeightMenu}" ButtonWidth="{DynamicResource ButtonWidthMenu}" PreviewMouseDown="BtnContinue"/>
         </Grid>
 
     </Grid>

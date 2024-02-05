@@ -72,10 +72,12 @@
     <Style x:Key="CommonText" TargetType="TextBlock">
         <Setter Property="Foreground" Value="{StaticResource LIGTHCOLOR}"/>
         <Setter Property="FontSize" Value="{DynamicResource CommonFontSize}"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="TextAlignment" Value="Center"/>
         <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="IsHitTestVisible" Value="False"/>
     </Style>
     <Style x:Key="DispenTextButton" TargetType="TextBlock">
         <Setter Property="Foreground" Value="{StaticResource LIGTHCOLOR}"/>
@@ -145,13 +147,23 @@
     <Style x:Key="IconEyeStyle" TargetType="{x:Type md:PackIcon}">
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="Width" Value="{DynamicResource IconSize}"/>
         <Setter Property="Height" Value="{DynamicResource IconSize}"/>
         <Setter Property="Foreground" Value="{StaticResource SECONDARYCOLOR}"/>
         <Setter Property="Kind" Value="{DynamicResource IconEye}" />
     </Style>
 
+    <!--ESTILO BOTONES GENERICO-->
+    <Style x:Key="ButonGenericStyle" TargetType="Border">
+        <Setter Property="Width" Value="{DynamicResource ButtonWidthMenu}"/>
+        <Setter Property="Height" Value="{DynamicResource ButtonHeightMenu}"/>
+        <Setter Property="CornerRadius" Value="{DynamicResource MinCornersRadius}"/>
+        <Setter Property="Background" Value="{StaticResource SECONDARYCOLOR}"/>
+        <Setter Property="Margin" Value="{DynamicResource MinMarginGrid}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        
+    </Style>
 
 
 

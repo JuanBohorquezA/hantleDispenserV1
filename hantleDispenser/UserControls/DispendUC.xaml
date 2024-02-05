@@ -204,8 +204,8 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <local:GenericButton  Grid.Column="0"  ButtonBackground="{StaticResource PRIMARYCOLOR}" ButtonText="Dispensar"  HorizontalAlignment="Center" VerticalAlignment="Center" ButtonHeight="{DynamicResource MButtonHeight}" ButtonWidth="{DynamicResource MButtonWidth}" PreviewMouseDown="BtnContinue"/>
-            <local:GenericButton  Grid.Column="1"  ButtonBackground="{StaticResource PRIMARYCOLOR}" ButtonText="Cancelar"  HorizontalAlignment="Center" VerticalAlignment="Center" ButtonHeight="{DynamicResource MButtonHeight}" ButtonWidth="{DynamicResource MButtonWidth}" PreviewMouseDown="BtnCancelar"/>
+            <local:GenericButton  Grid.Column="0"  ButtonBackground="{StaticResource PRIMARYCOLOR}" ButtonText="Dispensar"  HorizontalAlignment="Center" VerticalAlignment="Center" ButtonHeight="{DynamicResource ButtonHeightMenu}" ButtonWidth="{DynamicResource ButtonWidthMenu}" PreviewMouseDown="BtnContinue"/>
+            <local:GenericButton  Grid.Column="1"  ButtonBackground="{StaticResource PRIMARYCOLOR}" ButtonText="Cancelar"  HorizontalAlignment="Center" VerticalAlignment="Center" ButtonHeight="{DynamicResource ButtonHeightMenu}" ButtonWidth="{DynamicResource ButtonWidthMenu}" PreviewMouseDown="BtnCancelar"/>
 
         </Grid>
     </Grid>

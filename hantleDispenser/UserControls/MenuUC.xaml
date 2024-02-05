@@ -24,61 +24,61 @@
             <TextBlock d:FontSize="35" Grid.Row="1" x:Name="txtWelcome" Text="HOLA USUARIO COMO VAMOS PA?" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{DynamicResource CommonFontSize}" Foreground="{StaticResource TITLECOLOR}" FontWeight="SemiBold"/>
         </Grid>
 
-
-
-
-        <!-- GENERAMOS EL MENU CON BOTONES INDEPENDIENTES Y LUEGO ITERAREMOS EL GRID PARA VALIDAR LOS ROLES (LA VISIBILITY DEPENDE DEL ROL)-->
         <Border d:Margin="20" Margin="{DynamicResource MarginGrid}" Grid.Row="1" CornerRadius="35" Background="{StaticResource PRIMARYCOLOR}" >
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid d:Margin="20" Margin="{DynamicResource MarginGrid}" Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <!--Inicialize BUTTON-->
-                    <Border d:Margin="20" x:Name="ButtonInit" Margin="{DynamicResource MarginGrid}" Grid.Column="0" CornerRadius="15" Background="{StaticResource SECONDARYCOLOR}" Cursor="Hand" PreviewMouseDown="BtnInicialize">
-                        <TextBlock d:FontSize="35" Text="Inicializar" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}"/>
-                    </Border>
+            <Viewbox>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid d:Margin="20" Margin="{DynamicResource MarginGrid}" Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!--Inicialize BUTTON-->
+                        <Border  x:Name="ButtonInit" Grid.Column="0"  Style="{StaticResource ButonGenericStyle}" PreviewMouseDown="BtnInicialize">
+                            <TextBlock d:FontSize="35" Text="Inicializar" Style="{StaticResource CommonText}"/>
+                        </Border>
 
-                    <!--Dispend BUTTON-->
-                    <Border d:Margin="20" d:Visibility="Visible" x:Name="ButtonDispend" Margin="{DynamicResource MarginGrid}" Grid.Column="1" CornerRadius="15" Background="{StaticResource SECONDARYCOLOR}" Cursor="Hand" Visibility="Collapsed" PreviewMouseDown="BtnDispend">
-                        <TextBlock d:FontSize="35" Text="Dispensar" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}"/>
-                    </Border>
+                        <!--Dispend BUTTON-->
+                        <Border  d:Visibility="Visible" x:Name="ButtonDispend" Grid.Column="1" Style="{StaticResource ButonGenericStyle}" Visibility="Collapsed" PreviewMouseDown="BtnDispend">
+                            <TextBlock d:FontSize="35" Text="Dispensar" Style="{StaticResource CommonText}" />
+                        </Border>
 
-                    <!--Dispend quantites  BUTTON-->
-                    <Border d:Margin="20" d:Visibility="Visible" x:Name="ButtonDispendQuantities" Margin="{DynamicResource MarginGrid}" Grid.Column="2" CornerRadius="15" Background="{StaticResource SECONDARYCOLOR}" Cursor="Hand" Visibility="Collapsed" PreviewMouseDown="BtnDispendQuantites">
-                        <TextBlock d:FontSize="35" Text="Dispensar cantidades" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}"/>
-                    </Border>
+                        <!--Dispend quantites  BUTTON-->
+                        <Border  d:Visibility="Visible" x:Name="ButtonDispendQuantities"  Grid.Column="2" Style="{StaticResource ButonGenericStyle}" Visibility="Collapsed" PreviewMouseDown="BtnDispendQuantites">
+                            <TextBlock d:FontSize="35" Text="Dispensar cantidades" Style="{StaticResource CommonText}"/>
+                        </Border>
+                    </Grid>
+
+                    <Grid d:Margin="20" Margin="{DynamicResource MarginGrid}" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--Get Sensor BUTTON-->
+                        <Border  x:Name="ButtonGetSensor" Grid.Column="0"  Style="{StaticResource ButonGenericStyle}" PreviewMouseDown="BtnGetSensor">
+                            <TextBlock d:FontSize="35" Text="Obtener sensor" Style="{StaticResource CommonText}"/>
+                        </Border>
+
+                        <!--try Eject BUTTON-->
+                        <Border x:Name="ButtonEject" Grid.Column="1"  Style="{StaticResource ButonGenericStyle}"  PreviewMouseDown="BtntryEject">
+                            <TextBlock d:FontSize="35" Text="Desatascar" Style="{StaticResource CommonText}" />
+                        </Border>
+
+                        <!--Exit  BUTTON-->
+                        <Border  x:Name="ButtonExit" Grid.Column="2"  Style="{StaticResource ButonGenericStyle}"  PreviewMouseDown="BtnExit">
+                            <TextBlock d:FontSize="35" Text="Salir" Style="{StaticResource CommonText}"/>
+                        </Border>
+                    </Grid>
+
                 </Grid>
+            </Viewbox>
 
-                <Grid d:Margin="20" Margin="{DynamicResource MarginGrid}" Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <!--Get Sensor BUTTON-->
-                    <Border d:Margin="20" x:Name="ButtonGetSensor" Margin="{DynamicResource MarginGrid}" Grid.Column="0" CornerRadius="15" Background="{StaticResource SECONDARYCOLOR}" Cursor="Hand" PreviewMouseDown="BtnGetSensor">
-                        <TextBlock d:FontSize="35" Text="Obtener sensor" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}"/>
-                    </Border>
-
-                    <!--try Eject BUTTON-->
-                    <Border d:Margin="20" x:Name="ButtonEject" Margin="{DynamicResource MarginGrid}" Grid.Column="1" CornerRadius="15" Background="{StaticResource SECONDARYCOLOR}" Cursor="Hand" PreviewMouseDown="BtntryEject">
-                        <TextBlock d:FontSize="35" Text="Desatascar" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}"/>
-                    </Border>
-
-                    <!--Exit  BUTTON-->
-                    <Border d:Margin="20" x:Name="ButtonExit" Margin="{DynamicResource MarginGrid}" Grid.Column="2" CornerRadius="15" Background="{StaticResource SECONDARYCOLOR}" Cursor="Hand" PreviewMouseDown="BtnExit">
-                        <TextBlock d:FontSize="35" Text="Salir" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}"/>
-                    </Border>
-                </Grid>
-
-            </Grid>
         </Border>
 
     </Grid>

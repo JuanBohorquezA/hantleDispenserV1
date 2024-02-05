@@ -53,7 +53,10 @@ namespace hantleDispenser.Domain
                 }
 
                 var HandlerResponseInit = _handler.Initialize();
+          
+
                 if (!HandlerResponseInit.isSuccess) HandlerResponseInit.UIResponse = string.Format(HandlerResponse.ErrorInitialize, HandlerResponseInit.ErrorDescription);
+
 
                 Response.Add(HandlerResponseInit);
             });
@@ -75,7 +78,7 @@ namespace hantleDispenser.Domain
         public static async Task<List<CDMS_Response>> GoDispendQuantities(int[] quantities)
         {
             Response = new();
-            await Application.Current.Dispatcher.InvokeAsync(async() =>
+            await Application.Current.Dispatcher.InvokeAsync(() =>
             {
                 if (!IsConnected()) {
                     Response.Add( new CDMS_Response { isSuccess = false, UIResponse = HandlerResponse.WithoutConnection });
@@ -113,12 +116,22 @@ namespace hantleDispenser.Domain
             Response = new();
             await Application.Current.Dispatcher.InvokeAsync(() =>
             {
+                var EjectResponse = new CDMS_Response();
                 if (!IsConnected())
                 {
                     Response.Add(new CDMS_Response { isSuccess = false, UIResponse = HandlerResponse.WithoutConnection });
                     return;
                 }
-                var EjectResponse = _handler.Eject();
+                try
+                {
+                     EjectResponse = _handler.Eject();
+                }
+                catch (Exception ex)
+                {
+                    Response.Add(new CDMS_Response { isSuccess = false, UIResponse = HandlerResponse.EjectTimeOut, ErrorDescription = "TimeOut", ErrorCode = ErrorCDMS.RuntimeError});
+                    return;
+                }
+                
                 if (!EjectResponse.isSuccess) EjectResponse.UIResponse = HandlerResponse.FailEject;
                 
                 Response.Add(EjectResponse);

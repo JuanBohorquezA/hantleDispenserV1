@@ -47,6 +47,7 @@ namespace hantleDispenser.UserControls
         public async void BtnGetSensor(object sender, MouseButtonEventArgs e)
         {
             _loadModal = _nav.ShowLoadModal("Obteniendo la respuesta del sensor...");
+            await Task.Delay(1000);
             SessionManager.HantleResponse = await OperationManager.GoGetSensor();
             _nav.CloseLoadModal(ref _loadModal);
             Dispatcher.Invoke(() => { Goto(new FinishUC()); });

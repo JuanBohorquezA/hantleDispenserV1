@@ -85,7 +85,7 @@ namespace hantleDispenser.UserControls
             }
             _loadModal =_nav.ShowLoadModal("Realizando la dispensación...");
 
-            var result = await OperationManager.GoDispendQuantities(quantities.ToArray());
+            SessionManager.HantleResponse = await OperationManager.GoDispendQuantities(quantities.ToArray());
 
             _nav.CloseLoadModal(ref _loadModal);
             

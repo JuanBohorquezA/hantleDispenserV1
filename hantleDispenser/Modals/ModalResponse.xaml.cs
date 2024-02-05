@@ -69,11 +69,9 @@ namespace hantleDispenser.Modals
             this.Resources["MarginGrid"] = new Thickness(Math.Round(_minDimension * 0.02));
 
 
-            this.Resources["MinButtonWidth"] = (double)Math.Round(_minDimension * 0.24);
-            this.Resources["MidButtonWidth"] = (double)Math.Round(_minDimension * 0.44);
-
-            this.Resources["MinButtonHeight"] = (double)Math.Round(_minDimension * 0.05);
-            this.Resources["GifDimensions"] = (double)Math.Round(_minDimension * 0.19);
+            //definiciones para el ancho de los botones 
+            this.Resources["ButtonWidthMenu"] = (double)Math.Round(_maxDimension * 0.2);
+            this.Resources["ButtonHeightMenu"] = (double)Math.Round(_maxDimension * 0.05);
 
         }
         private void ConfigureModal()
