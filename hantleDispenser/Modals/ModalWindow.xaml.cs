@@ -82,19 +82,19 @@ namespace hantleDispenser.Modals
             this.LoadGif.Visibility = _viewModel.TypeModal.LoadGifVisibility;
         }
 
-        private void BtnAcept_MouseDown(object sender, MouseButtonEventArgs e)
+        private void ButtonAcept(object sender, EventArgs e)
         {
             this.DialogResult = true;
             this.Close();
         }
 
-        private void BtnConfirm_MouseDown(object sender, MouseButtonEventArgs e)
+        private void ButtonConfirm(object sender, EventArgs e)
         {
             this.DialogResult = true;
             this.Close ();
         }
 
-        private void BtnCancel_MouseDown(object sender, MouseButtonEventArgs e)
+        private void ButtonCancel(object sender, EventArgs e)
         {
             this.DialogResult = false;
             this.Close();

@@ -31,7 +31,7 @@ namespace hantleDispenser
         {
             SetDimensions();
             SetDynamicResource();
-            _navigatorSingleton.NavigateTo(new ConfigUC());
+            _navigatorSingleton.NavigateTo(new HomeUC());
         }
 
         public void SetDimensions()

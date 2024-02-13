@@ -91,18 +91,18 @@
 
 
                 <!--Confirm BUTTON-->
-                <Border x:Name="BtnConfirm" Grid.Column="0" Style="{StaticResource ButonGenericStyle}" PreviewMouseDown="BtnConfirm_MouseDown">
+                <Border x:Name="BtnConfirm" Grid.Column="0" Style="{StaticResource ButonGenericStyle}" PreviewMouseDown="ButtonConfirm" PreviewTouchDown="ButtonConfirm">
                     <TextBlock  Text="Sí, estoy seguro" Style="{StaticResource CommonText}"/>
                 </Border>
 
                 <!--Acept BUTTON-->
-                <Border x:Name="BtnAcept" Grid.Column="1" Style="{StaticResource ButonGenericStyle}" Background="{StaticResource QUATERNARYCOLOR}" PreviewMouseDown="BtnAcept_MouseDown">
+                <Border x:Name="BtnAcept" Grid.Column="1" Style="{StaticResource ButonGenericStyle}" Background="{StaticResource QUATERNARYCOLOR}" PreviewMouseDown="ButtonAcept" PreviewTouchDown="ButtonAcept">
                     <TextBlock  Text="Aceptar" Style="{StaticResource CommonText}"/>
                 </Border>
 
 
                 <!--Inicialize BUTTON-->
-                <Border x:Name="BtnCancel" Grid.Column="2" Style="{StaticResource ButonGenericStyle}" PreviewMouseDown="BtnCancel_MouseDown">
+                <Border x:Name="BtnCancel" Grid.Column="2" Style="{StaticResource ButonGenericStyle}" PreviewMouseDown="ButtonCancel" PreviewTouchDown="ButtonCancel">
                     <TextBlock  Text="Cancelar" Style="{StaticResource CommonText}"/>
                 </Border>
             </Grid>

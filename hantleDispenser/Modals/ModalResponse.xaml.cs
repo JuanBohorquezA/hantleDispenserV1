@@ -38,7 +38,7 @@ namespace hantleDispenser.Modals
 
 
         }
-        public void Onloaded(object sender, RoutedEventArgs e)
+        public void Onloaded(object sender, EventArgs e)
         {
             SetDimensions();
             SetDynamicResource();
@@ -85,7 +85,7 @@ namespace hantleDispenser.Modals
             _viewModel.Response = stringBuilder.ToString();
         }
 
-        private void BtnAcept_MouseDown(object sender, MouseButtonEventArgs e)
+        private void ButtonAcept(object sender, EventArgs e)
         {
             this.DialogResult = true;
         }

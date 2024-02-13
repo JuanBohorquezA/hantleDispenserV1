@@ -43,7 +43,7 @@
                 </Grid.ColumnDefinitions>
 
                 <!--Acept BUTTON-->
-                <Border x:Name="BtnAcept" Grid.Column="1" Style="{StaticResource ButonGenericStyle}" Background="{StaticResource QUATERNARYCOLOR}" PreviewMouseDown="BtnAcept_MouseDown">
+                <Border x:Name="BtnAcept" Grid.Column="1" Style="{StaticResource ButonGenericStyle}" Background="{StaticResource QUATERNARYCOLOR}" PreviewMouseDown="ButtonAcept" PreviewTouchDown="ButtonAcept">
                     <TextBlock  Text="Aceptar" Style="{StaticResource CommonText}"/>
                 </Border>
 
