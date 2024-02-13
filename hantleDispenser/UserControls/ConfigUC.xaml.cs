@@ -9,6 +9,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows;
 using handlerDispenser.Domain;
+using System;
+using System.ComponentModel;
 
 namespace hantleDispenser.UserControls
 {
@@ -17,18 +19,21 @@ namespace hantleDispenser.UserControls
     /// </summary>
     public partial class ConfigUC : AppUserControl
     {
+        private ConfigViewModel _viewModel;
         private ModalWindow? _loadModal;
-        public List<string> COMLIST { get; }
-        public List<string> DENOMINATIONSLIST { get; }
-
-
         public ConfigUC()
         {
             InitializeComponent();
-            COMLIST = Persistence.COM_LIST;
-            DENOMINATIONSLIST = Persistence.DENOMINATIONS_LIST;
-            DataContext = this;
+            _viewModel = new();
+            this.DataContext = _viewModel;
+            this.Loaded += Onloaded;
 
+        }
+        private void Onloaded(object sender, EventArgs e)
+        {
+            GetElements();
+            COMS.ItemsSource = _viewModel.COMLIST;
+            Denominations.ItemsSource = _viewModel.DENOMINATIONLIST;
         }
         private bool ItemSelected(ListBox listBox)
         {
@@ -37,6 +42,18 @@ namespace hantleDispenser.UserControls
                 return false;
 
             return true;
+        }
+        private void GetElements()
+        {
+            _viewModel.COMLIST = Persistence.COM_LIST;
+            _viewModel.DENOMINATIONLIST = Persistence.DENOMINATIONS_LIST;
+        }
+
+        private void BtnRefresh(object sender, MouseButtonEventArgs e)
+        {
+            GetElements();
+            COMS.ItemsSource = _viewModel.COMLIST;
+            Denominations.ItemsSource = _viewModel.DENOMINATIONLIST;
         }
         private void  SetDenominations()
         {
@@ -89,5 +106,43 @@ namespace hantleDispenser.UserControls
 
         }
 
+    }
+    public class ConfigViewModel : INotifyPropertyChanged
+    {
+        private List<string>? _COMLIST;
+        public List<string>? COMLIST
+        {
+            get
+            {
+                return _COMLIST;
+            }
+            set
+            {
+                _COMLIST = value;
+                OnPropertyRaised(nameof(COMLIST));
+            }
+        }
+
+        private List<string>? _DENOMINATIONLIST;
+        public List<string>? DENOMINATIONLIST
+        {
+            get
+            {
+                return _DENOMINATIONLIST;
+            }
+            set
+            {
+                _DENOMINATIONLIST = value;
+                OnPropertyRaised(nameof(DENOMINATIONLIST));
+            }
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        private void OnPropertyRaised(string propertyname)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
+
+        }
     }
 }

@@ -99,6 +99,7 @@ namespace HantleDispenserAPI
         PaperShortGap,
         PaperLongLength,
         PaperShortLength,
+        WithOutPhysicalCon,
         RuntimeError
     }
 

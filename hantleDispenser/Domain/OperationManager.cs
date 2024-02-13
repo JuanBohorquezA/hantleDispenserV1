@@ -99,12 +99,52 @@ namespace hantleDispenser.Domain
             {
                 if (!IsConnected())
                 {
-                    Response.Add(new CDMS_Response { isSuccess = false, UIResponse = HandlerResponse.WithoutConnection });
+                    Response.Add(new CDMS_Response { isSuccess = false, UIResponse = HandlerResponse.WithoutConnection, ErrorCode = ErrorCDMS.WithOutPhysicalCon, ErrorDescription = "No hay conexión" });
                     return;
                 }
 
                 var GetSensorResponse = _handler.GetSensor();
-                if (!GetSensorResponse.isSuccess) GetSensorResponse.UIResponse = HandlerResponse.ErrorSensor;
+                if(GetSensorResponse == null || GetSensorResponse.ErrorCode == ErrorCDMS.RuntimeError || GetSensorResponse.SensorInfo == null)
+                {
+                    Response.Add(new CDMS_Response { isSuccess = false, UIResponse = HandlerResponse.WithoutPhysicalConnection, ErrorCode = ErrorCDMS.WithOutPhysicalCon, ErrorDescription = "Runtime Error", SensorInfo = GetSensorResponse?.SensorInfo  });
+                    return;
+                }
+                if (GetSensorResponse.SensorInfo.RejectBoxOpen)
+                {
+                    Response.Add(new CDMS_Response { isSuccess = false, UIResponse = HandlerResponse.RejectBoxOpen, ErrorCode = ErrorCDMS.RejectBoxSwitch, ErrorDescription = "Caja de rechazo abierta", SensorInfo = GetSensorResponse.SensorInfo });
+                    return;
+                }
+
+                for (int i = 0; i < _handler.cassetesValues.Count; i++)
+                {
+                    if (!GetSensorResponse.SensorInfo.CassetteConnected[i])
+                    {
+                        Response.Add(new CDMS_Response { isSuccess = false, UIResponse = string.Format(HandlerResponse.CasseteDisconnected, i + 1), ErrorCode = ErrorCDMS.CasseteMounting, ErrorDescription = $"Baúl {i + 1} desconectado", SensorInfo   = GetSensorResponse.SensorInfo});
+                        return;
+                    }
+                    if (GetSensorResponse.SensorInfo.CassetteDismounted[i])
+                    {
+                        Response.Add(new CDMS_Response { isSuccess = false, UIResponse = string.Format(HandlerResponse.CasseteDismounted, i + 1), ErrorCode = ErrorCDMS.CasseteMounting, ErrorDescription = $"Baúl {i + 1} desmontado", SensorInfo = GetSensorResponse.SensorInfo });
+                        return;
+                    }
+                    if (GetSensorResponse.SensorInfo.CassetteSkew1[i] || GetSensorResponse.SensorInfo.CassetteSkew2[i])
+                    {
+                        Response.Add(new CDMS_Response { isSuccess = false, UIResponse = string.Format(HandlerResponse.CasseteBadLoaded, i + 1), ErrorCode = ErrorCDMS.SkewSensorJam, ErrorDescription = $"Baúl {i + 1} mal cargado", SensorInfo = GetSensorResponse.SensorInfo });
+                        return;
+
+                    }
+                }
+
+                if (GetSensorResponse.SensorInfo.CisOpen )
+                {
+                    Response.Add(new CDMS_Response { isSuccess = false, UIResponse = HandlerResponse.SensorCISOpen, ErrorCode = ErrorCDMS.CISOpenSwitch, ErrorDescription = "CIS Open", SensorInfo = GetSensorResponse.SensorInfo });
+                    return;
+                }
+                if (GetSensorResponse.SensorInfo.ScanStart || GetSensorResponse.SensorInfo.Gate1 || GetSensorResponse.SensorInfo.Gate2 || GetSensorResponse.SensorInfo.Exit || GetSensorResponse.SensorInfo.RejectIn)
+                {
+                    Response.Add(new CDMS_Response { isSuccess = false, UIResponse = HandlerResponse.JAM, ErrorCode = ErrorCDMS.ScanSensorJam, ErrorDescription = "Hay un Obstaculo", SensorInfo = GetSensorResponse.SensorInfo });
+                    return;
+                }
 
                 Response.Add(GetSensorResponse);
             });

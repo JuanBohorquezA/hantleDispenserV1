@@ -22,14 +22,15 @@
 
             <TextBlock Grid.Row="0" Text="Respuesta del hantle" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="{DynamicResource CommonFontSize}" FontWeight="SemiBold" Foreground="{StaticResource LIGTHCOLOR}" />
         </Grid>
-        <Border Grid.Row="1" Background="{StaticResource PRIMARYCOLOR}" Margin="{DynamicResource MarginGrid}">
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Background="Transparent">
-                <TextBox Text="{Binding Response}"  Style="{StaticResource ResponseText}"/>
-            </ScrollViewer>
-        </Border>
+
+            <Border Grid.Row="1" Background="{StaticResource PRIMARYCOLOR}" Margin="{DynamicResource MarginGrid}">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Background="Transparent">
+                    <TextBox Text="{Binding Response}"  Style="{StaticResource ResponseText}" FontSize="30"/>
+                </ScrollViewer>
+            </Border>
 
 
-        <Grid Grid.Row="2">
+            <Grid Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
