@@ -1,4 +1,5 @@
 ﻿using hantleDispenser.Domain;
+using hantleDispenser.Domain.UIDictionaries.DinamycResources;
 using hantleDispenser.UserControls;
 using Newtonsoft.Json;
 using System;
@@ -41,8 +42,9 @@ namespace hantleDispenser.Modals
         public void Onloaded(object sender, EventArgs e)
         {
             SetDimensions();
-            SetDynamicResource();
+            this.Resources.AddDinamycResources(_maxDimension, _minDimension);
             ConfigureModal();
+           
         }
 
         public void SetDimensions()

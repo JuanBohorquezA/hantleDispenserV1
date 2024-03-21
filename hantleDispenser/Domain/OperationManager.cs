@@ -15,6 +15,8 @@ namespace hantleDispenser.Domain
     {
         private static CDMS_Handler _handler = CDMS_Handler.Instance;
         private static int[]? _quantities { get; set; }
+        private static bool _isMaxRejectErr { get; set; } = false;
+        public static bool MustReinitialize { get; set; } = false;
         private static int _valueToDispense { get; set; } = 0;
         public static int DispensedValue { get; set; } = 0;
         public static int CoinsValue { get; set; } = 0;
@@ -57,7 +59,7 @@ namespace hantleDispenser.Domain
 
                 if (!HandlerResponseInit.isSuccess) HandlerResponseInit.UIResponse = string.Format(HandlerResponse.ErrorInitialize, HandlerResponseInit.ErrorDescription);
 
-
+                MustReinitialize = false;
                 Response.Add(HandlerResponseInit);
             });
             return Response;
@@ -247,10 +249,32 @@ namespace hantleDispenser.Domain
             //Si se presenta un atasco
             if ((DispendResponse.ErrorDescription.EndsWith("Sensor") || DispendResponse.ErrorDescription.EndsWith("Jam") || DispendResponse.ErrorDescription.EndsWith("JamOrEmpty")) && IsJammed())
             {
+                if (DispendResponse.ErrorCode == ErrorCDMS.ExitSensorJam || DispendResponse.ErrorCode == ErrorCDMS.Exit1PathSensor)
+                {
+                    Thread.Sleep(500); // Se espera un tiempo debido al movimiento y la inercia del billete
+                    var resSensor = _handler.GetSensor();
+                    if (resSensor == null || resSensor.SensorInfo == null)
+                    {
+                        DispendResponse.UIResponse = HandlerResponse.JAM;
+                        CoinsValue = _valueToDispense - DispensedValue;
+                        Response.Add(DispendResponse);
+                        return;
+                    }
+                    if (!resSensor.SensorInfo.Exit) // Si el sensonr exit no tiene atasco significa que el billete salió realmente y hay que volverlo a añadir a la cuenta
+                    {
+                        MissingValue -= denomsWithMissing[0].Denomination * 1;
+                        DispensedValue += denomsWithMissing[0].Denomination * 1;
+                        DispensedData[denomsWithMissing[0].Denomination] += 1;
+                        RejectData[denomsWithMissing[0].Denomination] -= 1;
+                      
+                    }
+
+                }
                 if (!TryEject()) //Intenta Ejectar 3 veces
                 {
                     CoinsValue = _valueToDispense - DispensedValue;
                     DispendResponse.UIResponse = HandlerResponse.FailMaxEject;
+                    MustReinitialize = false;
                     Response.Add(DispendResponse);
                     return;
                 }
@@ -261,9 +285,26 @@ namespace hantleDispenser.Domain
                 return;
             };
 
-            CoinsValue = _valueToDispense - DispensedValue;
+            if (DispendResponse.ErrorDescription.Contains("RejectMax"))
+            {
+                if (!_isMaxRejectErr)
+                {
+                    _isMaxRejectErr = true;
+                    _handler.Eject();
+                    Dispend(MissingValue, cassetteToIgnore);
+                    CoinsValue = _valueToDispense - DispensedValue;
+                    return;
+                }
 
+                CoinsValue = _valueToDispense - DispensedValue;
+                MustReinitialize = true;
+                return;
+
+            }
+
+            CoinsValue = _valueToDispense - DispensedValue;
             DispendResponse.UIResponse = HandlerResponse.StatusUndetermined;
+            MustReinitialize = false;
             Response.Add(DispendResponse);
             return;
         }
@@ -343,6 +384,7 @@ namespace hantleDispenser.Domain
             DispensedValue = 0;
             DispensedData = new();
             RejectData = new();
+            _isMaxRejectErr = false;
             foreach (var denom in _handler.cassetesValues)
             {
                 DispensedData.Add(denom, 0);

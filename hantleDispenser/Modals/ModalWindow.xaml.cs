@@ -1,4 +1,5 @@
-﻿using hantleDispenser.UserControls;
+﻿using hantleDispenser.Domain.UIDictionaries.DinamycResources;
+using hantleDispenser.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,7 +42,7 @@ namespace hantleDispenser.Modals
         public void Onloaded(object sender, RoutedEventArgs e)
         {
             SetDimensions();
-            SetDynamicResource();
+            this.Resources.AddDinamycResources(_maxDimension, _minDimension);
             ConfigureModal();
         }
 

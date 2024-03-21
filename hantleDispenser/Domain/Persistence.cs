@@ -30,7 +30,7 @@ namespace hantleDispenser.Domain
         //        return new List<string> { "COM1","COM2","COM3"};
         //    }
         //}
-        public static List<string> DENOMINATIONS_LIST { get { return new List<string> { "$10,000 - $2000", "$20,000 - $10,000 - $2000", "$50,000 - $10,000 - $2000", "$50,000 - $20,000 - $2000" }; } }
+        public static List<string> DENOMINATIONS_LIST { get { return new List<string> {"$10,000 - $2000", "$20,000 - $10,000 - $2000", "$50,000 - $10,000 - $2000", "$50,000 - $20,000 - $2000" }; } }
         public static string CopyRight
         {
             get

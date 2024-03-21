@@ -27,7 +27,7 @@ namespace HantleDispenserAPI
         public List<int> cassetesValues { get; }
         private CDMS_Handler(string portname, string denominations) //10000-2000
         {
-            port = Convert.ToInt32(portname.Substring(portname.Length-1));
+            port = Convert.ToInt32(portname.Replace("COM",""));
 
             cassetesValues = new List<int>();
             var denomsSplited = denominations.Split('-');
