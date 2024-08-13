@@ -15,4 +15,5 @@ Para utilizar este proyecto, es necesario contar con:
 - `.NET 6.0` o superior.
 - Conexión al hardware del dispensador.
 - Permisos de administrador en la máquina donde se ejecuta el proyecto.
+- Anexar las Dlls 
 
